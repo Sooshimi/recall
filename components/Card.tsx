@@ -1,14 +1,32 @@
-import {Button, StyleSheet, Text, TextInput, View} from 'react-native'
-import React from 'react';
+import {Button, StyleSheet, TextInput, View} from 'react-native'
+import React, {useState} from 'react';
 
-const Card = () => {
+type Props = {
+	onSubmit: (value: string) => void;
+};
+
+const Card = ({ onSubmit }: Props) => {
+	const [text, setText] = useState<string>('');
+
+	const handleSubmit = () => {
+		if (!text.trim()) return
+		onSubmit(text.trim());
+		setText('');
+	};
+
 	return (
 		<View style={styles.container}>
-			<TextInput style={styles.textBox} placeholder={"Type here"} placeholderTextColor={"gray"}></TextInput>
+			<TextInput
+				value={text}
+				onChangeText={setText}
+				style={styles.textBox}
+				placeholder={"Type here"}
+				placeholderTextColor={"gray"}>
+			</TextInput>
 			<Button
-				title="+"
-				onPress={() => alert("Button clicked")}
-				color={"white"}
+				title="Add"
+				onPress={handleSubmit}
+				color="white"
 			>
 			</Button>
 		</View>
