@@ -1,52 +1,42 @@
-import {Button, StyleSheet, TextInput, View} from 'react-native'
+import {Button, StyleSheet, Text, View} from 'react-native'
 import React, {useState} from 'react';
 
 type Props = {
-	onSubmit: (value: string) => void;
+	text: string;
 };
 
-const Card = ({ onSubmit }: Props) => {
-	const [text, setText] = useState<string>('');
-
-	const handleSubmit = () => {
-		if (!text.trim()) return
-		onSubmit(text.trim());
-		setText('');
-	};
+const Card = ({ text }: Props) => {
 
 	return (
 		<View style={styles.container}>
-			<TextInput
-				value={text}
-				onChangeText={setText}
-				style={styles.textBox}
-				placeholder={"Type here"}
-				placeholderTextColor={"gray"}>
-			</TextInput>
-			<Button
-				title="Add"
-				onPress={handleSubmit}
-				color="white"
-			>
-			</Button>
+			<View style={styles.innerContainer}>
+				<Text style={styles.text}>{text}</Text>
+			</View>
 		</View>
-	)
-}
+	);
+};
 
 export default Card
 const styles = StyleSheet.create({
 	container: {
-		flexDirection: 'row',
+		flex: 1,
+		backgroundColor: '#233a51',
+		paddingTop: 10,
+		paddingBottom: 10,
+		paddingLeft: 10,
+		paddingRight: 10,
+	},
+	innerContainer: {
 		justifyContent: 'center',
-		alignItems: 'stretch',
+		alignItems: 'center',
 		backgroundColor: '#43607a',
+		borderRadius: 15,
 		paddingTop: 20,
 		paddingBottom: 20,
 		paddingLeft: 20,
-		paddingRight: 10
+		paddingRight: 20
 	},
-	textBox: {
-		flex: 1,
-		backgroundColor: '#fff'
+	text: {
+		color: 'white'
 	}
-})
+});

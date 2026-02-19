@@ -1,6 +1,7 @@
-import {FlatList, StyleSheet, Text} from 'react-native'
+import {FlatList, StyleSheet, Text, View} from 'react-native'
 import React, {useState} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
+import InputCard from '@/components/InputCard';
 import Card from '@/components/Card';
 
 const Index = () => {
@@ -12,22 +13,32 @@ const Index = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Card onSubmit={addItem} />
-      <FlatList
-        data={items}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => <Text>{item}</Text>}
-      />
+      <View style={styles.cardContainer}>
+        <InputCard onSubmit={addItem} />
+        <FlatList
+          data={items}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({ item }) =>
+            <Card text={item} />
+        }
+        />
+      </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 export default Index
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#989898',
     justifyContent: "flex-start",
-    alignItems: "center"
+    backgroundColor: '#233a51'
+  },
+  cardContainer: {
+    flex: 1,
+    paddingTop: 20,
+    paddingBottom: 20,
+    paddingRight: 20,
+    paddingLeft: 20
   }
-})
+});
