@@ -8,10 +8,18 @@ type Props = {
 const InputCard = ({ onSubmit }: Props) => {
 	const [text, setText] = useState<string>('');
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		if (!text.trim()) return
-		onSubmit(text.trim());
-		setText('');
+
+		try {
+			const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
+			const data = await response.json();
+			onSubmit(text.trim() + ' - ' + data[0].meanings[0].definitions[0].definition);
+			setText('');
+		} catch(e) {
+			console.log(e);
+			alert('Cannot find word')
+		}
 	};
 
 	return (
