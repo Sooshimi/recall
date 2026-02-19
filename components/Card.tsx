@@ -4,7 +4,7 @@ import React from 'react';
 const Card = () => {
 	return (
 		<View style={styles.container}>
-			<TextInput style={styles.textBox} placeholder={"Type here"} placeholderTextColor={"gray/"}></TextInput>
+			<TextInput style={styles.textBox} placeholder={"Type here"} placeholderTextColor={"gray"}></TextInput>
 			<Button
 				title="+"
 				onPress={() => alert("Button clicked")}
