@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native'
+import {FlatList, StyleSheet, View} from 'react-native'
 import React, {useState} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 import InputCard from '@/components/InputCard';
