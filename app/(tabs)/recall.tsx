@@ -15,6 +15,7 @@ const Recall = () => {
 				{ cards && cards.length > 0 && (
 					<Card text={cards[0].word} definition={cards[0].definition} />
 				)}
+				<Button title="Mark as read" color='gray'></Button>
 			</View>
 		</SafeAreaView>
 	)
@@ -25,15 +26,10 @@ export default Recall
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#233a51'
+		backgroundColor: '#233a51',
+		justifyContent: 'center',
 	},
 	cardContainer: {
-		flex: 1,
-		backgroundColor: '#233a51',
-		flexDirection: 'row',
-		alignItems: 'center',
-		paddingTop: 20,
-		paddingBottom: 20,
 		paddingRight: 20,
 		paddingLeft: 20
 	}
