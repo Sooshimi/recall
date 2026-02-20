@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native'
+import {Button, StyleSheet, View} from 'react-native'
 import React, {useContext} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 
@@ -12,7 +12,9 @@ const Recall = () => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.cardContainer}>
-				<Card text={cards[0].word} definition={cards[0].definition} />
+				{ cards && cards.length > 0 && (
+					<Card text={cards[0].word} definition={cards[0].definition} />
+				)}
 			</View>
 		</SafeAreaView>
 	)
