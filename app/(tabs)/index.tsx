@@ -1,15 +1,14 @@
 import {FlatList, StyleSheet, View} from 'react-native'
-import React, {useState} from 'react'
+import React, {useContext} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
+
 import InputCard from '@/components/InputCard';
 import Card from '@/components/Card';
+import {CardsContext} from "@/context/CardsContext";
 
 const Index = () => {
-  const [cards, setCards] = useState<{ word: string; definition: string; }[]>([]);
-
-  const addCard = (newCard: {word: string, definition: string}) => {
-    setCards([newCard, ...cards]);
-  };
+  // @ts-ignore
+  const { cards, addCard } = useContext(CardsContext)
 
   return (
     <SafeAreaView style={styles.container}>

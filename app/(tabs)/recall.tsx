@@ -1,13 +1,18 @@
 import {StyleSheet, Text, View} from 'react-native'
-import React from 'react'
+import React, {useContext} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
+
 import Card from "@/components/Card";
+import {CardsContext} from "@/context/CardsContext";
 
 const Recall = () => {
+	// @ts-ignore
+	const { cards, addCard } = useContext(CardsContext)
+
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.cardContainer}>
-				<Card text='word' definition='definition' />
+				<Card text={cards[0].word} definition={cards[0].definition} />
 			</View>
 		</SafeAreaView>
 	)
