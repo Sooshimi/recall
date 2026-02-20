@@ -3,14 +3,16 @@ import React from 'react';
 
 type Props = {
 	text: string;
+	definition: string;
 };
 
-const Card = ({ text }: Props) => {
+const Card = ({ text, definition }: Props) => {
 
 	return (
 		<View style={styles.container}>
 			<View style={styles.innerContainer}>
-				<Text style={styles.text}>{text}</Text>
+				<Text style={styles.word}>{text}</Text>
+				<Text style={styles.definition}>{definition}</Text>
 			</View>
 		</View>
 	);
@@ -36,7 +38,13 @@ const styles = StyleSheet.create({
 		paddingLeft: 20,
 		paddingRight: 20
 	},
-	text: {
+	word: {
+		fontWeight: 'bold',
+		color: 'white',
+		paddingBottom: 10,
+	},
+	definition: {
+		fontStyle: 'italic',
 		color: 'white'
 	}
 });

@@ -5,21 +5,21 @@ import InputCard from '@/components/InputCard';
 import Card from '@/components/Card';
 
 const Index = () => {
-  const [items, setItems] = useState<string[]>([]);
+  const [cards, setCards] = useState<{ word: string; definition: string; }[]>([]);
 
-  const addItem = (newItem: string) => {
-    setItems([newItem, ...items]);
+  const addCard = (newCard: {word: string, definition: string}) => {
+    setCards([newCard, ...cards]);
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>
-        <InputCard onSubmit={addItem} />
+        <InputCard onSubmit={addCard}/>
         <FlatList
-          data={items}
+          data={cards}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) =>
-            <Card text={item} />
+            <Card text={item.word} definition={item.definition}/>
         }
         />
       </View>
