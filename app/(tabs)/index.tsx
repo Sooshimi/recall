@@ -29,10 +29,10 @@ const Index = () => {
 };
 
 export default Index
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
     backgroundColor: '#233a51'
   },
   cardContainer: {
