@@ -4,5 +4,6 @@ export default function RootLayout() {
   return (
     <Tabs>
       <Tabs.Screen name="index" options={{ headerShown: false, title: 'Home' }} />
+      <Tabs.Screen name="recall" options={{ headerShown: false, title: 'Recall' }} />
     </Tabs>
   )};
