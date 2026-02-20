@@ -21,7 +21,6 @@ const Card = ({ text, definition }: Props) => {
 export default Card
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
 		backgroundColor: '#233a51',
 		paddingTop: 10,
 		paddingBottom: 10,
