@@ -16,6 +16,7 @@ const Index = () => {
       <View style={styles.cardContainer}>
         <InputCard onSubmit={addCard}/>
         <FlatList
+          showsVerticalScrollIndicator={false}
           data={cards}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) =>
