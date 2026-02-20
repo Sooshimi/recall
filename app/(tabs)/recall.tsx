@@ -7,7 +7,7 @@ import {CardsContext} from "@/context/CardsContext";
 
 const Recall = () => {
 	// @ts-ignore
-	const { cards, addCard } = useContext(CardsContext)
+	const { cards } = useContext(CardsContext)
 
 	return (
 		<SafeAreaView style={styles.container}>
