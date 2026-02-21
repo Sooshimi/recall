@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 	innerContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#43607a',
+		backgroundColor: '#325475',
 		borderRadius: 15,
 		paddingTop: 20,
 		paddingBottom: 20,

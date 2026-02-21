@@ -54,15 +54,12 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'stretch',
 		backgroundColor: '#233a51',
-		paddingTop: 10,
-		paddingBottom: 10,
-		paddingLeft: 10,
-		paddingRight: 10
+		margin: 10
 	},
 	innerContainer: {
 		flex: 1,
 		flexDirection: 'row',
-		backgroundColor: '#43607a',
+		backgroundColor: '#325475',
 		borderRadius: 15,
 		paddingTop: 20,
 		paddingBottom: 20,
@@ -71,6 +68,11 @@ const styles = StyleSheet.create({
 	},
 	textBox: {
 		flex: 1,
-		backgroundColor: 'white'
+		backgroundColor: 'rgba(255,255,255,0.95)',
+		borderRadius: 10,
+		borderStyle: 'solid',
+		borderColor: 'gray',
+		borderWidth: 2,
+		textAlign: 'center'
 	}
 })
