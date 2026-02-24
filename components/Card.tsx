@@ -4,15 +4,17 @@ import React from 'react';
 type Props = {
 	text: string;
 	definition: string;
+	readCount: number;
 };
 
-const Card = ({ text, definition }: Props) => {
+const Card = ({ text, definition, readCount }: Props) => {
 
 	return (
 		<View style={styles.container}>
 			<View style={styles.innerContainer}>
 				<Text style={styles.word}>{text}</Text>
 				<Text style={styles.definition}>{definition}</Text>
+				<Text style={styles.definition}>{readCount}</Text>
 			</View>
 		</View>
 	);

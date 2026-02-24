@@ -7,15 +7,15 @@ import {CardsContext} from "@/context/CardsContext";
 
 const Recall = () => {
 	// @ts-ignore
-	const { cards } = useContext(CardsContext)
+	const { cards, readPressed } = useContext(CardsContext)
 
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.cardContainer}>
 				{ cards && cards.length > 0 && (
-					<Card text={cards[0].word} definition={cards[0].definition} />
+					<Card text={cards[0].word} definition={cards[0].definition} readCount={cards[0].readCount} />
 				)}
-				<Button title="Mark as read" color='gray'></Button>
+				<Button title="Mark as read" color='gray' onPress={() => readPressed(cards[0].word)}></Button>
 			</View>
 		</SafeAreaView>
 	)
