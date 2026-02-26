@@ -8,35 +8,40 @@ import {CardsContext} from "@/context/CardsContext";
 const Recall = () => {
 	// @ts-ignore
 	const { cards, readPressed } = useContext(CardsContext);
-	const [ currentCard, setCurrentCard ] = useState<number>(0);
+	const [ currentCardIndex, setCurrentCardIndex ] = useState<number>(0);
+
+	// This is to also check if the current card exists.
+	const currentCard = cards[currentCardIndex];
 
 	const readPressedHandler = () => {
 		if (!cards || cards.length === 0) return;
 
-		readPressed(cards[currentCard].word);
+		readPressed(currentCard.word);
 
 		// Loop back to first card when reaching end of card list
-		if (currentCard < cards.length - 1) {
-			setCurrentCard(currentCard + 1);
+		if (currentCardIndex < cards.length - 1) {
+			setCurrentCardIndex(currentCardIndex + 1);
 		} else {
-			setCurrentCard(0);
+			setCurrentCardIndex(0);
 		}
 	};
 
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.cardContainer}>
-				{ cards && cards.length > 0 && (
+				{ currentCard && (
 					<Card
-						text={cards[currentCard].word}
-						definition={cards[currentCard].definition}
-						readCount={cards[currentCard].readCount} />
+						text={currentCard.word}
+						definition={currentCard.definition}
+						readCount={currentCard.readCount} />
 				)}
+				{ currentCard && (
 				<Button
 					title="Mark as read"
 					color='gray'
 					onPress={() => {readPressedHandler()}}>
 				</Button>
+				)}
 			</View>
 		</SafeAreaView>
 	)

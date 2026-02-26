@@ -10,6 +10,12 @@ const CardsContextProvider = ({ children }) => {
 		setCards([{...newCard, readCount: 0}, ...cards]);
 	};
 
+	const removeCard = (word: string) => {
+		setCards(prevCards =>
+			prevCards.filter(card => card.word !== word)
+		);
+	};
+
 	const readPressed = (word: string) => {
 		setCards(prevCards =>
 			prevCards.map(card => {
@@ -22,7 +28,7 @@ const CardsContextProvider = ({ children }) => {
 	};
 
 	return (
-		<CardsContext.Provider value={{cards, addCard, readPressed}}>
+		<CardsContext.Provider value={{cards, addCard, readPressed, removeCard}}>
 			{children}
 		</CardsContext.Provider>
 	)
