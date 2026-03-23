@@ -1,5 +1,5 @@
 import {Button, StyleSheet, View} from 'react-native'
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 
 import Card from "@/components/Card";
@@ -13,6 +13,20 @@ const Recall = () => {
 	// This is to also check if the current card exists.
 	const currentCard = cards[currentCardIndex];
 
+	// State-driven. Runs when a state has changed.
+	// This is added so recall cards are updated if a card is removed from home screen.
+	useEffect(() => {
+		if (!cards || cards.length === 0) {
+			setCurrentCardIndex(0);
+			return;
+		}
+
+		if (currentCardIndex >= cards.length) {
+			setCurrentCardIndex(currentCardIndex - 1);
+		}
+	}, [cards]);
+
+	// Event-driven. Runs only when user clicks on the 'read' button.
 	const readPressedHandler = () => {
 		if (!cards || cards.length === 0) return;
 
