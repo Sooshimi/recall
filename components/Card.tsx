@@ -1,4 +1,4 @@
-import {Button, StyleSheet, Text, View} from 'react-native'
+import {Button, StyleSheet, Text, View, Pressable} from 'react-native'
 import React, {useContext} from 'react';
 import {CardsContext} from "@/context/CardsContext";
 
@@ -13,14 +13,16 @@ const Card = ({ text, definition, readCount }: Props) => {
 	const { removeCard } = useContext(CardsContext);
 
 	return (
-		<View style={styles.container}>
+		<Pressable
+			onPress={() => { console.log("Pressed card:", text) }}
+			style={styles.container}>
 			<View style={styles.innerContainer}>
 				<Text style={styles.word}>{text}</Text>
 				<Text style={styles.definition}>{definition}</Text>
 				<Text style={styles.definition}>{readCount}</Text>
 				<Button title={"delete"} onPress={() => removeCard(text)}></Button>
 			</View>
-		</View>
+		</Pressable>
 	);
 };
 
