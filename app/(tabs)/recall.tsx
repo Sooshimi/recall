@@ -66,7 +66,7 @@ export default Recall
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#233a51',
+		backgroundColor: '#EAF0E5',
 		justifyContent: 'center',
 	},
 	cardContainer: {

@@ -32,7 +32,7 @@ export default Index
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#233a51'
+    backgroundColor: '#EAF0E5'
   },
   cardContainer: {
     flex: 1,

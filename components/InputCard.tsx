@@ -33,13 +33,13 @@ const InputCard = ({ onSubmit }: Props) => {
 					value={text}
 					onChangeText={setText}
 					style={styles.textBox}
-					placeholder={"Type here"}
+					placeholder={"Word lookup"}
 					placeholderTextColor={"gray"}>
 				</TextInput>
 				<Button
 					title="Add"
 					onPress={handleSubmit}
-					color="white"
+					color="#2D342C"
 				>
 				</Button>
 			</View>
@@ -53,13 +53,13 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'stretch',
-		backgroundColor: '#233a51',
+		backgroundColor: '#EAF0E5',
 		margin: 10
 	},
 	innerContainer: {
 		flex: 1,
 		flexDirection: 'row',
-		backgroundColor: '#325475',
+		backgroundColor: '#DDE5D8',
 		borderRadius: 15,
 		paddingTop: 20,
 		paddingBottom: 20,
@@ -68,11 +68,7 @@ const styles = StyleSheet.create({
 	},
 	textBox: {
 		flex: 1,
-		backgroundColor: 'rgba(255,255,255,0.95)',
-		borderRadius: 10,
-		borderStyle: 'solid',
-		borderColor: 'gray',
-		borderWidth: 2,
+		opacity: 1,
 		textAlign: 'center'
 	}
 })

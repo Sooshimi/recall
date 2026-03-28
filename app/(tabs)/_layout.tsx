@@ -13,7 +13,7 @@ export default function RootLayout() {
           position: 'absolute'
         }}}
       >
-        <Tabs.Screen name="index" options={{ headerShown: false, title: 'Home' }} />
+        <Tabs.Screen name="index" options={{ headerShown: false, title: 'Home', tabBarActiveTintColor: '#2D342C', tabBarInactiveTintColor: '#7A8076'}} />
         <Tabs.Screen name="recall" options={{ headerShown: false, title: 'Recall' }} />
       </Tabs>
     </CardsContextProvider>

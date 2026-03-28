@@ -29,7 +29,7 @@ const Card = ({ text, definition, readCount }: Props) => {
 export default Card
 const styles = StyleSheet.create({
 	container: {
-		backgroundColor: '#233a51',
+		backgroundColor: '#EAF0E5',
 		paddingTop: 10,
 		paddingBottom: 10,
 		paddingLeft: 10,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 	innerContainer: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#325475',
+		backgroundColor: '#FFFFFF',
 		borderRadius: 15,
 		paddingTop: 20,
 		paddingBottom: 20,
@@ -47,11 +47,11 @@ const styles = StyleSheet.create({
 	},
 	word: {
 		fontWeight: 'bold',
-		color: 'white',
+		color: '#2D342C',
 		paddingBottom: 10,
 	},
 	definition: {
 		fontStyle: 'italic',
-		color: 'white'
+		color: '#2D342C'
 	}
 });
