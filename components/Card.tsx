@@ -4,11 +4,12 @@ import {CardsContext} from "@/context/CardsContext";
 
 type Props = {
 	text: string;
+	partOfSpeech: string;
 	definition: string;
 	readCount: number;
 };
 
-const Card = ({ text, definition, readCount }: Props) => {
+const Card = ({ text, partOfSpeech, definition, readCount }: Props) => {
 	// @ts-ignore
 	const { removeCard } = useContext(CardsContext);
 
@@ -18,6 +19,7 @@ const Card = ({ text, definition, readCount }: Props) => {
 			style={styles.container}>
 			<View style={styles.innerContainer}>
 				<Text style={styles.word}>{text}</Text>
+				<Text style={styles.definition}>{"(" + partOfSpeech + ")"}</Text>
 				<Text style={styles.definition}>{definition}</Text>
 				<Text style={styles.definition}>{readCount}</Text>
 				<Button title={"delete"} onPress={() => removeCard(text)}></Button>

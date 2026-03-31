@@ -19,7 +19,11 @@ const Index = () => {
           data={cards}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) =>
-            <Card text={item.word} definition={item.definition} readCount={item.readCount}/>
+            <Card text={item.word}
+                  definition={item.definition}
+                  partOfSpeech={item.partOfSpeech}
+                  readCount={item.readCount}
+            />
         }
         />
       </View>

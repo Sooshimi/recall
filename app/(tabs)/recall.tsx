@@ -47,6 +47,7 @@ const Recall = () => {
 					<Card
 						text={currentCard.word}
 						definition={currentCard.definition}
+						partOfSpeech={currentCard.partOfSpeech}
 						readCount={currentCard.readCount} />
 				)}
 				{ currentCard && (

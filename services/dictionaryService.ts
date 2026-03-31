@@ -9,5 +9,8 @@ export const fetchDefinitions = async (word: string) => {
 
 	const data = await response.json();
 
-	return data?.[0]?.meanings?.[0]?.definitions?.[0]?.definition ?? 'No definition found';
+	const definition: string = data?.[0]?.meanings?.[0]?.definitions?.[0]?.definition ?? 'No definition found';
+	const partOfSpeech: string = data?.[0]?.meanings?.[0]?.partOfSpeech ?? 'No part of speech found';
+
+	return {definition, partOfSpeech};
 };

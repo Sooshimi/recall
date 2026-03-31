@@ -3,7 +3,11 @@ import React, {useState} from 'react';
 import { fetchDefinitions } from "@/services/dictionaryService";
 
 type Props = {
-	onSubmit: (value: { word: string, definition: string }) => void;
+	onSubmit: (value:
+						 { word: string,
+							 partOfSpeech: string,
+							 definition: string
+						 }) => void;
 };
 
 const InputCard = ({ onSubmit }: Props) => {
@@ -13,10 +17,10 @@ const InputCard = ({ onSubmit }: Props) => {
 		if (!text.trim()) return;
 
 		try {
-			const definition = await fetchDefinitions(text);
+			const {partOfSpeech, definition} = await fetchDefinitions(text);
 			const word = text.trim()
 
-			onSubmit({ word, definition });
+			onSubmit({ word, partOfSpeech, definition });
 			setText('');
 
 		} catch(e) {
