@@ -1,5 +1,6 @@
 import {Button, StyleSheet, TextInput, View} from 'react-native'
 import React, {useState} from 'react';
+import { fetchDefinitions } from "@/services/dictionaryService";
 
 type Props = {
 	onSubmit: (value: { word: string, definition: string }) => void;
@@ -12,10 +13,8 @@ const InputCard = ({ onSubmit }: Props) => {
 		if (!text.trim()) return;
 
 		try {
-			const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${text}`)
-			const data = await response.json();
+			const definition = await fetchDefinitions(text);
 			const word = text.trim()
-			const definition = data[0].meanings[0].definitions[0].definition
 
 			onSubmit({ word, definition });
 			setText('');
