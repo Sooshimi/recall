@@ -9,7 +9,23 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.masonc.recall",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "build": {
+      "development": {
+        "developmentClient": true,
+        "distribution": "internal"
+      },
+      "ios-simulator": {
+        "extends": "development",
+        "ios": {
+          "simulator": true
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -43,6 +59,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a632cdc4-ed38-42d0-9671-34ca956d4985"
+      }
+    },
+    "owner": "masonc"
   }
 }
