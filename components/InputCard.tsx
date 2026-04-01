@@ -5,8 +5,7 @@ import { fetchDefinitions } from "@/services/dictionaryService";
 type Props = {
 	onSubmit: (value:
 						 { word: string,
-							 partOfSpeech: string,
-							 definition: string
+							 meanings: Record<string, string[]>
 						 }) => void;
 };
 
@@ -17,10 +16,10 @@ const InputCard = ({ onSubmit }: Props) => {
 		if (!text.trim()) return;
 
 		try {
-			const {partOfSpeech, definition} = await fetchDefinitions(text);
+			const meanings = await fetchDefinitions(text);
 			const word = text.trim()
 
-			onSubmit({ word, partOfSpeech, definition });
+			onSubmit({ word, meanings });
 			setText('');
 
 		} catch(e) {

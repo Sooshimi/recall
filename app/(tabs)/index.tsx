@@ -20,8 +20,7 @@ const Index = () => {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) =>
             <Card text={item.word}
-                  definition={item.definition}
-                  partOfSpeech={item.partOfSpeech}
+                  meanings={item.meanings}
                   readCount={item.readCount}
             />
         }

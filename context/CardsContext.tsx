@@ -4,9 +4,12 @@ export const CardsContext = createContext({});
 
 // @ts-ignore
 const CardsContextProvider = ({ children }) => {
-	const [cards, setCards] = useState<{ word: string; definition: string; readCount: number; }[]>([]);
+	const [cards, setCards] = useState<{
+		word: string;
+		meanings: Record<string, string[]>;
+		readCount: number; }[]>([]);
 
-	const addCard = (newCard: {word: string, definition: string, readCount: number }) => {
+	const addCard = (newCard: {word: string, meanings: Record<string, string[]>, readCount: number }) => {
 		setCards([{...newCard, readCount: 0}, ...cards]);
 	};
 

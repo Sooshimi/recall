@@ -8,9 +8,17 @@ export const fetchDefinitions = async (word: string) => {
 	}
 
 	const data = await response.json();
+	const entry = data?.[0];
 
-	const definition: string = data?.[0]?.meanings?.[0]?.definitions?.[0]?.definition ?? 'No definition found';
-	const partOfSpeech: string = data?.[0]?.meanings?.[0]?.partOfSpeech ?? 'No part of speech found';
+	const meanings: Record<string, string[]> =
+		entry?.meanings?.reduce((acc: Record<string, string[]>, meaning: any) => {
+			const partOfSpeech = meaning?.partOfSpeech ?? 'unknown';
+			const definition = meaning?.definitions?.map((d: any) => d?.definition).filter(Boolean) ?? [];
 
-	return {definition, partOfSpeech};
+			acc[partOfSpeech] = definition;
+			return acc;
+			}, {}
+		) ?? {};
+
+	return meanings
 };
