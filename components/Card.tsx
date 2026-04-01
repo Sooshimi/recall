@@ -1,5 +1,5 @@
 import {Button, StyleSheet, Text, View, Pressable} from 'react-native'
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {CardsContext} from "@/context/CardsContext";
 
 type Props = {
@@ -12,15 +12,17 @@ type Props = {
 const Card = ({ text, partOfSpeech, definition, readCount }: Props) => {
 	// @ts-ignore
 	const { removeCard } = useContext(CardsContext);
+	const [ expand, setExpand ] = useState<boolean>(false);
 
 	return (
 		<Pressable
-			onPress={() => { console.log("Pressed card:", text) }}
+			onPress={() => setExpand((prev) => !prev)}
 			style={styles.container}>
 			<View style={styles.innerContainer}>
 				<Text style={styles.word}>{text}</Text>
 				<Text style={styles.definition}>{"(" + partOfSpeech + ")"}</Text>
 				<Text style={styles.definition}>{definition}</Text>
+				{expand && <Text style={styles.definition}>Card expanded to show more info</Text>}
 				<Text style={styles.definition}>{readCount}</Text>
 				<Button title={"delete"} onPress={() => removeCard(text)}></Button>
 			</View>
