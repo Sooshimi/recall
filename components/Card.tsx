@@ -1,6 +1,6 @@
-import {Button, StyleSheet, Text, View, Pressable} from 'react-native'
-import React, {useContext, useState} from 'react';
-import {CardsContext} from "@/context/CardsContext";
+import { CardsContext } from "@/context/CardsContext";
+import React, { useContext, useState } from 'react';
+import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
 
 type Props = {
 	text: string;
@@ -13,6 +13,7 @@ const Card = ({ text, meanings, readCount }: Props) => {
 	const { removeCard } = useContext(CardsContext);
 	const [ expand, setExpand ] = useState<boolean>(false);
 	const maxDefinitions = 2;
+	const debug = false;
 
 	return (
 		<Pressable
@@ -47,7 +48,10 @@ const Card = ({ text, meanings, readCount }: Props) => {
 					})}
 				</View>
 
-				<Text style={styles.definition}>{readCount}</Text>
+				{ debug && (
+					<Text style={styles.definition}>{readCount}</Text>
+				)}
+
 				<Button title={"delete"} onPress={() => removeCard(text)}/>
 			</View>
 		</Pressable>
