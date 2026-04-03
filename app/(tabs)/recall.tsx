@@ -1,9 +1,9 @@
-import {Button, StyleSheet, View} from 'react-native'
-import React, {useContext, useState, useEffect} from 'react'
-import {SafeAreaView} from "react-native-safe-area-context";
+import React, { useContext, useEffect, useState } from 'react';
+import { Button, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import Card from "@/components/Card";
-import {CardsContext} from "@/context/CardsContext";
+import { CardsContext } from "@/context/CardsContext";
 
 const Recall = () => {
 	// @ts-ignore
@@ -42,21 +42,23 @@ const Recall = () => {
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<View style={styles.cardContainer}>
-				{ currentCard && (
-					<Card
-						text={currentCard.word}
-						meanings={currentCard.meanings}
-						readCount={currentCard.readCount} />
-				)}
-				{ currentCard && (
-				<Button
-					title="Mark as read"
-					color='gray'
-					onPress={() => {readPressedHandler()}}>
-				</Button>
-				)}
-			</View>
+			<ScrollView contentContainerStyle={styles.scrollViewContent} showsVerticalScrollIndicator={false}>
+				<View style={styles.cardContainer}>
+					{ currentCard && (
+						<Card
+							text={currentCard.word}
+							meanings={currentCard.meanings}
+							readCount={currentCard.readCount} />
+					)}
+					{ currentCard && (
+					<Button
+						title="Mark as read"
+						color='gray'
+						onPress={() => {readPressedHandler()}}>
+					</Button>
+					)}
+				</View>
+			</ScrollView>
 		</SafeAreaView>
 	)
 }
@@ -72,5 +74,9 @@ const styles = StyleSheet.create({
 	cardContainer: {
 		paddingRight: 20,
 		paddingLeft: 20
+	},
+	scrollViewContent: {
+		flexGrow: 1,
+		justifyContent: 'center'
 	}
 });
