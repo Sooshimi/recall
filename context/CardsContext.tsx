@@ -1,13 +1,16 @@
-import React, {createContext, useState} from 'react'
+import React, { createContext, useState } from 'react';
 
 export const CardsContext = createContext({});
 
+type Card = {
+	word: string;
+	meanings: Record<string, string[]>;
+	readCount: number;
+}
+
 // @ts-ignore
 const CardsContextProvider = ({ children }) => {
-	const [cards, setCards] = useState<{
-		word: string;
-		meanings: Record<string, string[]>;
-		readCount: number; }[]>([]);
+	const [cards, setCards] = useState<Card[]>([]);
 
 	const addCard = (newCard: {word: string, meanings: Record<string, string[]>, readCount: number }) => {
 		setCards([{...newCard, readCount: 0}, ...cards]);
