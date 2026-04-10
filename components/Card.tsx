@@ -10,7 +10,7 @@ type Props = {
 
 const Card = ({ text, meanings, readCount }: Props) => {
 	// @ts-ignore
-	const { removeCard } = useContext(CardsContext);
+	const { archiveCard } = useContext(CardsContext);
 	const [ expand, setExpand ] = useState<boolean>(false);
 	const maxDefinitions = 2;
 	const debug = false;
@@ -52,7 +52,7 @@ const Card = ({ text, meanings, readCount }: Props) => {
 					<Text style={styles.definition}>{readCount}</Text>
 				)}
 
-				<Button title={"delete"} onPress={() => removeCard(text)}/>
+				<Button title={"archive"} onPress={() => archiveCard({ word: text, meanings, readCount })}/>
 			</View>
 		</Pressable>
 	);

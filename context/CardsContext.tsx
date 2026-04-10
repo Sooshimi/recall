@@ -1,8 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useEffect, useState } from 'react';
 
-const STORAGE_KEY = 'cards';
 export const CardsContext = createContext({});
+const ACTIVE_CARDS = 'cards';
+const ARCHIVED_CARDS = 'archivedCards';
 
 type Card = {
 	word: string;
@@ -13,30 +14,38 @@ type Card = {
 // @ts-ignore
 const CardsContextProvider = ({ children }) => {
 	const [cards, setCards] = useState<Card[]>([]);
+	const [archivedCards, setArchivedCards] = useState<Card[]>([]);
 
 	// Load cards from AsyncStorage on mount
 	// [] as dependency to run only once on mount
 	useEffect(() => {
 		(async () => {
-			const raw = await AsyncStorage.getItem(STORAGE_KEY);
+			const raw = await AsyncStorage.getItem(ACTIVE_CARDS);
+			const archivedRaw = await AsyncStorage.getItem(ARCHIVED_CARDS);
 			if (raw) setCards(JSON.parse(raw));
+			if (archivedRaw) setArchivedCards(JSON.parse(archivedRaw));
 		})();
 	}, []);
 
 	// Save cards to AsyncStorage whenever they change
 	// [cards] as dependency to run whenever cards change
 	useEffect(() => {
-		AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(cards));
+		AsyncStorage.setItem(ACTIVE_CARDS, JSON.stringify(cards));
 	}, [cards]);
+
+	useEffect(() => {
+		AsyncStorage.setItem(ARCHIVED_CARDS, JSON.stringify(archivedCards));
+	}, [archivedCards]);
 
 	const addCard = (newCard: Card) => {
 		setCards([{...newCard, readCount: 0}, ...cards]);
 	};
 
-	const removeCard = (word: string) => {
+	const archiveCard = (cardToArchive: Card) => {
 		setCards(prevCards =>
-			prevCards.filter(card => card.word !== word)
+			prevCards.filter(c => cardToArchive.word !== c.word)
 		);
+		setArchivedCards([{...cardToArchive}, ...archivedCards]);
 	};
 
 	const readPressed = (word: string) => {
@@ -51,7 +60,7 @@ const CardsContextProvider = ({ children }) => {
 	};
 
 	return (
-		<CardsContext.Provider value={{cards, addCard, readPressed, removeCard}}>
+		<CardsContext.Provider value={{cards, addCard, readPressed, archiveCard}}>
 			{children}
 		</CardsContext.Provider>
 	)
