@@ -14,7 +14,8 @@ export default function RootLayout() {
         }}}
       >
         <Tabs.Screen name="index" options={{ headerShown: false, title: 'Home', tabBarActiveTintColor: '#2D342C', tabBarInactiveTintColor: '#7A8076'}} />
-        <Tabs.Screen name="recall" options={{ headerShown: false, title: 'Recall' }} />
+        <Tabs.Screen name="recall" options={{ headerShown: false, title: 'Recall', tabBarActiveTintColor: '#2D342C', tabBarInactiveTintColor: '#7A8076'}}/>
+        <Tabs.Screen name="archive" options={{ headerShown: false, title: 'Archive', tabBarActiveTintColor: '#2D342C', tabBarInactiveTintColor: '#7A8076'}} />
       </Tabs>
     </CardsContextProvider>
   )};

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { createContext, useEffect, useState } from 'react';
 
-export const CardsContext = createContext({});
+
 const ACTIVE_CARDS = 'cards';
 const ARCHIVED_CARDS = 'archivedCards';
 
@@ -10,6 +10,24 @@ type Card = {
 	meanings: Record<string, string[]>;
 	readCount: number;
 }
+
+// WIP: adding archived cards to context
+export const CardsContext = createContext({});
+// type CardsContextType = {
+// 	cards: Card[];
+// 	archivedCards: Card[];
+// 	addCard: (newCard: Card) => void;
+// 	readPressed: (word: string) => void;
+// 	archiveCard: (cardToArchive: Card) => void;
+// };
+
+// export const CardsContext = createContext<CardsContextType>({
+// 	cards: [],
+// 	archivedCards: [],
+// 	addCard: () => {},
+// 	readPressed: () => {},
+// 	archiveCard: () => {},
+// });
 
 // @ts-ignore
 const CardsContextProvider = ({ children }) => {
@@ -60,7 +78,7 @@ const CardsContextProvider = ({ children }) => {
 	};
 
 	return (
-		<CardsContext.Provider value={{cards, addCard, readPressed, archiveCard}}>
+		<CardsContext.Provider value={{cards, archivedCards, addCard, readPressed, archiveCard}}>
 			{children}
 		</CardsContext.Provider>
 	)
