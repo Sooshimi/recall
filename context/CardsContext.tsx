@@ -11,23 +11,7 @@ type Card = {
 	readCount: number;
 }
 
-// WIP: adding archived cards to context
 export const CardsContext = createContext({});
-// type CardsContextType = {
-// 	cards: Card[];
-// 	archivedCards: Card[];
-// 	addCard: (newCard: Card) => void;
-// 	readPressed: (word: string) => void;
-// 	archiveCard: (cardToArchive: Card) => void;
-// };
-
-// export const CardsContext = createContext<CardsContextType>({
-// 	cards: [],
-// 	archivedCards: [],
-// 	addCard: () => {},
-// 	readPressed: () => {},
-// 	archiveCard: () => {},
-// });
 
 // @ts-ignore
 const CardsContextProvider = ({ children }) => {
