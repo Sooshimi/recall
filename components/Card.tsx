@@ -6,9 +6,10 @@ type Props = {
 	text: string;
 	meanings: Record<string, string[]>;
 	readCount: number;
+	onDelete?: () => void;
 };
 
-const Card = ({ text, meanings, readCount }: Props) => {
+const Card = ({ text, meanings, readCount, onDelete }: Props) => {
 	// @ts-ignore
 	const { archiveCard } = useContext(CardsContext);
 	const [ expand, setExpand ] = useState<boolean>(false);
@@ -52,7 +53,10 @@ const Card = ({ text, meanings, readCount }: Props) => {
 					<Text style={styles.definition}>{readCount}</Text>
 				)}
 
-				<Button title={"archive"} onPress={() => archiveCard({ word: text, meanings, readCount })}/>
+				{onDelete
+					? <Button title={"delete"} onPress={onDelete} />
+					: <Button title={"archive"} onPress={() => archiveCard({ word: text, meanings, readCount })} />
+				}
 			</View>
 		</Pressable>
 	);

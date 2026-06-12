@@ -7,7 +7,7 @@ import { CardsContext } from "@/context/CardsContext";
 
 const Archive = () => {
   // @ts-ignore
-  const { archivedCards } = useContext(CardsContext)
+  const { archivedCards, deleteCard } = useContext(CardsContext)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -20,6 +20,7 @@ const Archive = () => {
             <Card text={item.word}
                   meanings={item.meanings}
                   readCount={item.readCount}
+                  onDelete={() => deleteCard(item)}
             />
         }
         />
