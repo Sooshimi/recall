@@ -43,15 +43,23 @@ const CardsContextProvider = ({ children }) => {
 		setCards([{...newCard, readCount: 0}, ...cards]);
 	};
 
+	const restoreCard = (cardToRestore: Card) => {
+		setArchivedCards(prevCards =>
+			prevCards.filter(c => c.word !== cardToRestore.word)
+		);
+		setCards(prevCards => [{...cardToRestore}, ...prevCards]);
+	};
+
 	const deleteCard = (cardToDelete: Card) => {
-		setArchivedCards(prev => prev.filter(c => c.word !== cardToDelete.word))
+		setArchivedCards(prev =>
+			prev.filter(c => c.word !== cardToDelete.word))
 	}
 
 	const archiveCard = (cardToArchive: Card) => {
 		setCards(prevCards =>
 			prevCards.filter(c => cardToArchive.word !== c.word)
 		);
-		setArchivedCards([{...cardToArchive}, ...archivedCards]);
+		setArchivedCards(prev => [{...cardToArchive}, ...prev]);
 	};
 
 	const readPressed = (word: string) => {
@@ -66,7 +74,7 @@ const CardsContextProvider = ({ children }) => {
 	};
 
 	return (
-		<CardsContext.Provider value={{cards, archivedCards, addCard, readPressed, archiveCard, deleteCard}}>
+		<CardsContext.Provider value={{cards, archivedCards, addCard, readPressed, archiveCard, deleteCard, restoreCard}}>
 			{children}
 		</CardsContext.Provider>
 	)

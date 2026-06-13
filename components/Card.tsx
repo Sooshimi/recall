@@ -6,10 +6,11 @@ type Props = {
 	text: string;
 	meanings: Record<string, string[]>;
 	readCount: number;
+	onRestore?: () => void;
 	onDelete?: () => void;
 };
 
-const Card = ({ text, meanings, readCount, onDelete }: Props) => {
+const Card = ({ text, meanings, readCount, onDelete, onRestore }: Props) => {
 	// @ts-ignore
 	const { archiveCard } = useContext(CardsContext);
 	const [ expand, setExpand ] = useState<boolean>(false);
@@ -54,7 +55,12 @@ const Card = ({ text, meanings, readCount, onDelete }: Props) => {
 				)}
 
 				{onDelete
-					? <Button title={"delete"} onPress={onDelete} />
+					? (
+						<>
+							<Button title={"delete"} onPress={onDelete} />
+							<Button title={"restore"} onPress={onRestore} />
+						</>
+					)
 					: <Button title={"archive"} onPress={() => archiveCard({ word: text, meanings, readCount })} />
 				}
 			</View>
