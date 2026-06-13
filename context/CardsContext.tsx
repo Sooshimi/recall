@@ -32,11 +32,11 @@ const CardsContextProvider = ({ children }) => {
 	// Save cards to AsyncStorage whenever they change
 	// [cards] as dependency to run whenever cards change
 	useEffect(() => {
-		AsyncStorage.setItem(ACTIVE_CARDS, JSON.stringify(cards));
+		AsyncStorage.setItem(ACTIVE_CARDS, JSON.stringify(cards)).catch(console.error);
 	}, [cards]);
 
 	useEffect(() => {
-		AsyncStorage.setItem(ARCHIVED_CARDS, JSON.stringify(archivedCards));
+		AsyncStorage.setItem(ARCHIVED_CARDS, JSON.stringify(archivedCards)).catch(console.error);
 	}, [archivedCards]);
 
 	const addCard = (newCard: Card) => {
