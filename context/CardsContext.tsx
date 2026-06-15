@@ -40,7 +40,12 @@ const CardsContextProvider = ({ children }) => {
 	}, [archivedCards]);
 
 	const addCard = (newCard: Card) => {
+		const alreadyExists = cards.some(card =>
+			card.word.toLowerCase() === newCard.word.toLowerCase());
+		if (alreadyExists) return false;
+
 		setCards([{...newCard, readCount: 0}, ...cards]);
+		return true;
 	};
 
 	const restoreCard = (cardToRestore: Card) => {

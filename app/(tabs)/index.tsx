@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, View} from 'react-native'
+import {FlatList, StyleSheet, View, Alert} from 'react-native'
 import React, {useContext} from 'react'
 import {SafeAreaView} from "react-native-safe-area-context";
 
@@ -10,10 +10,17 @@ const Index = () => {
   // @ts-ignore
   const { cards, addCard } = useContext(CardsContext)
 
+  const handleAddCard = (newCard: any) => {
+    const success = addCard(newCard);
+    if (!success) {
+      Alert.alert(`"${newCard.word}" already exists in your cards.`);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>
-        <InputCard onSubmit={addCard}/>
+        <InputCard onSubmit={handleAddCard}/>
         <FlatList
           showsVerticalScrollIndicator={false}
           data={cards}
