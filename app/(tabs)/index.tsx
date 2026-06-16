@@ -11,9 +11,11 @@ const Index = () => {
   const { cards, addCard } = useContext(CardsContext)
 
   const handleAddCard = (newCard: any) => {
-    const success = addCard(newCard);
-    if (!success) {
-      Alert.alert(`"${newCard.word}" already exists in your cards.`);
+    const result = addCard(newCard);
+    if (result === 'duplicate') {
+      Alert.alert(`"${newCard.word}" already exists in your active cards.`);
+    } else if (result === 'archived') {
+      Alert.alert(`"${newCard.word}" is already archived.`);
     }
   };
 
