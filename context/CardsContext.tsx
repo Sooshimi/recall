@@ -45,7 +45,6 @@ const CardsContextProvider = ({ children }) => {
 		if (archivedCards.some(card => card.word.toLowerCase() === newCard.word.toLowerCase()))
 			return 'archived';
 		setCards([{...newCard, readCount: 0}, ...cards]);
-		return 'added';
 	};
 
 	const restoreCard = (cardToRestore: Card) => {

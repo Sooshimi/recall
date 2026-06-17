@@ -8,14 +8,21 @@ import {CardsContext} from "@/context/CardsContext";
 
 const Index = () => {
   // @ts-ignore
-  const { cards, addCard } = useContext(CardsContext)
+  const { cards, addCard, restoreCard } = useContext(CardsContext)
 
   const handleAddCard = (newCard: any) => {
     const result = addCard(newCard);
     if (result === 'duplicate') {
       Alert.alert(`"${newCard.word}" already exists in your active cards.`);
-    } else if (result === 'archived') {
-      Alert.alert(`"${newCard.word}" is already archived.`);
+    }
+    else if (result === 'archived') {
+      Alert.alert(`"${newCard.word}" is already archived.`,
+        '',
+        [
+          {text: 'Cancel', style: 'cancel'},
+          {text: 'Restore', onPress: () => restoreCard(newCard)}
+        ]
+      );
     }
   };
 
