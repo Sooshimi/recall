@@ -1,50 +1,38 @@
-# Welcome to your Expo app 👋
+# Recall 📚
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A personal React Native vocabulary app for learning new words. Still a work in progress!
 
-## Get started
+## Features
 
-1. Install dependencies
+- Add new words and fetch definitions from the [Free Dictionary API](https://dictionaryapi.dev/)
+- Organized tabs for active cards, archive, and recall
+- Quiz yourself with flashcard-style recall mode
+- View word definitions with parts of speech
+- Archive words as you become proficient with them
+- Track how many times you've reviewed each word
 
-   ```bash
-   npm install
-   ```
+## Planned Features
 
-2. Start the app
+### First Priority: Notification System
+Frequent notifications will remind users to learn their recently added words. When tapped, users can quickly review the word and mark it as "read" to help reinforce learning and boost vocabulary retention.
 
-   ```bash
-   npx expo start
-   ```
+## Screenshots
 
-In the output, you'll find options to open the app in a
+<img width="302" height="656" alt="active_cards" src="https://github.com/user-attachments/assets/ef8fcbcf-dc1c-45d5-b473-db5f1958b586" />
+<img width="302" height="656" alt="recall" src="https://github.com/user-attachments/assets/ba2efc0d-6819-4f64-8502-686132b4a6ce" />
+<img width="302" height="656" alt="archived_cards" src="https://github.com/user-attachments/assets/589f07e3-9900-473a-8ae7-dd32712deb5b" />
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Video demo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+https://github.com/user-attachments/assets/30ef4865-27b3-4574-b84a-74a89881be0f
 
-## Get a fresh project
+## Tech Stack
 
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **Framework**: [Expo](https://expo.dev/) with React Native
+- **Navigation**: Expo Router (file-based routing)
+- **Language**: TypeScript
+- **State Management**: React Context API
+- **Storage**: AsyncStorage for persistent data
+- **REST API**: [Free Dictionary API](https://dictionaryapi.dev/)
+- **UI Components**: React Native, Expo Vector Icons
+- **Animations**: React Native Reanimated
