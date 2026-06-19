@@ -2,6 +2,8 @@
 
 A personal React Native vocabulary app for learning new words. Still a work in progress!
 
+The inspiration to this project: Since I've started reading more in the last few years, I found myself forgetting new words I've come across. Having a place where I can look up new words, store them, and have flash cards and frequent notifications to help me learn recently added words didn't sound like a bad idea.
+
 ## Features
 
 - Add new words and fetch definitions from the [Free Dictionary API](https://dictionaryapi.dev/)
