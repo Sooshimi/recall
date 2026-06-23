@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
 	},
 	cardContainer: {
 		paddingRight: 20,
-		paddingLeft: 20
+		paddingLeft: 20,
+		paddingBottom: 50
 	},
 	scrollViewContent: {
 		flexGrow: 1,

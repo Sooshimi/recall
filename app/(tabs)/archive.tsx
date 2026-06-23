@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     flex: 1,
     paddingTop: 20,
-    paddingBottom: 20,
+    paddingBottom: 50,
     paddingRight: 20,
     paddingLeft: 20
   }

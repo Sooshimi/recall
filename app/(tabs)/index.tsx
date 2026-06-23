@@ -1,10 +1,10 @@
-import {FlatList, StyleSheet, View, Alert} from 'react-native'
-import React, {useContext} from 'react'
-import {SafeAreaView} from "react-native-safe-area-context";
+import React, { useContext } from 'react';
+import { Alert, FlatList, StyleSheet, View } from 'react-native';
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import InputCard from '@/components/InputCard';
 import Card from '@/components/Card';
-import {CardsContext} from "@/context/CardsContext";
+import InputCard from '@/components/InputCard';
+import { CardsContext } from "@/context/CardsContext";
 
 const Index = () => {
   // @ts-ignore
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   cardContainer: {
     flex: 1,
     paddingTop: 20,
-    paddingBottom: 20,
+    paddingBottom: 50,
     paddingRight: 20,
     paddingLeft: 20
   }
