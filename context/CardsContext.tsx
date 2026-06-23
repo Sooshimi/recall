@@ -81,7 +81,6 @@ const CardsContextProvider = ({ children }) => {
 				}
 				return card;
 			})
-				.sort((a, b) => b.readCount - a.readCount)
 		);
 	};
 
