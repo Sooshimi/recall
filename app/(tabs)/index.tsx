@@ -1,3 +1,4 @@
+import * as Notifications from "expo-notifications";
 import React, { useContext } from 'react';
 import { Alert, FlatList, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -12,6 +13,7 @@ const Index = () => {
 
   const handleAddCard = (newCard: any) => {
     const result = addCard(newCard);
+
     if (result === 'duplicate') {
       Alert.alert(`"${newCard.word}" already exists in your active cards.`);
     }
@@ -23,6 +25,20 @@ const Index = () => {
           {text: 'Restore', onPress: () => restoreCard(newCard)}
         ]
       );
+    }
+    else {
+      Notifications.scheduleNotificationAsync({
+        content: {
+          title: "New word added!",
+          body: `'${newCard.word}' has been added to your cards.`,
+          sound: 'default'
+        },
+        trigger: ({
+          type: 'timeInterval',
+          seconds: 1,
+          repeats: false
+        } as any)
+      });
     }
   };
 
