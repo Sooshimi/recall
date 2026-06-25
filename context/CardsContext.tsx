@@ -77,7 +77,9 @@ const CardsContextProvider = ({ children }) => {
 		setCards(prevCards =>
 			prevCards.map(card => {
 				if (card.word === word) {
-					return {...card, readCount: card.readCount + 1};
+					const updated = {...card, readCount: card.readCount + 1};
+					console.log(`[DEBUG] Marked as read: "${word}" → readCount: ${updated.readCount}`);
+					return updated;
 				}
 				return card;
 			})

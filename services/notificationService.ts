@@ -7,6 +7,9 @@ type notification_props = {
   seconds?: number
 };
 
+export const NOTIFICATION_CATEGORY = "NEW_WORD";
+export const MARK_AS_READ_ACTION = "MARK_AS_READ";
+
 // Ensures notifications pop up when the app is in the foreground as well as background.
 // This is called in the _layout component to set up notification handling when the app is first loaded.
 Notifications.setNotificationHandler({
@@ -16,6 +19,18 @@ Notifications.setNotificationHandler({
     shouldSetBadge: false
   })
 });
+
+const registerNotificationCategory = async () => {
+  await Notifications.setNotificationCategoryAsync(NOTIFICATION_CATEGORY, [
+    { 
+      identifier: MARK_AS_READ_ACTION,
+      buttonTitle: "Mark as read",
+      options: {
+        opensAppToForeground: true
+      }
+    }
+  ]);
+};
 
 // Requests and validates notification permissions. Returns true if permission granted, else false.
 export const setupNotifications = async (): Promise<boolean> => {
@@ -42,7 +57,21 @@ export const setupNotifications = async (): Promise<boolean> => {
     return false;
   }
 
+  registerNotificationCategory();
+
   return true;
+};
+
+export const meaningsForNotification = (meanings: Record<string, string[]>): string => {
+  const maxDefinitions = 2;
+
+  return Object.entries(meanings)
+    .map(([pos, definitions]) => {
+      const truncated = definitions.slice(0, maxDefinitions);
+      const suffix = definitions.length > maxDefinitions ? " …" : "";
+      return `${pos}: ${truncated.join("; ")}${suffix}`;
+    })
+    .join("\n\n");
 };
 
 // Wrapper function to schedule a local notification with a title, body, and optional delay in seconds. 

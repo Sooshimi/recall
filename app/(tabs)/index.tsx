@@ -6,12 +6,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Card from '@/components/Card';
 import InputCard from '@/components/InputCard';
 import { CardsContext } from "@/context/CardsContext";
+import { meaningsForNotification, NOTIFICATION_CATEGORY } from "@/services/notificationService";
 
 const Index = () => {
   // @ts-ignore
   const { cards, addCard, restoreCard } = useContext(CardsContext)
 
-  const handleAddCard = (newCard: any) => {
+  const handleAddCard = (newCard: { word: string, meanings: Record<string, string[]> }) => {
     const result = addCard(newCard);
 
     if (result === 'duplicate') {
@@ -27,15 +28,18 @@ const Index = () => {
       );
     }
     else {
+      // Schedule a notification for an added card.
       Notifications.scheduleNotificationAsync({
         content: {
-          title: "New word added!",
-          body: `'${newCard.word}' has been added to your cards.`,
-          sound: 'default'
+          title: "Recall this word?",
+          body: `'${newCard.word}'\n\n${meaningsForNotification(newCard.meanings)}`,
+          sound: 'default',
+          categoryIdentifier: NOTIFICATION_CATEGORY,
+          data: { word: newCard.word }
         },
         trigger: ({
           type: 'timeInterval',
-          seconds: 1,
+          seconds: 2,
           repeats: false
         } as any)
       });
