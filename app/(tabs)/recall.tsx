@@ -24,7 +24,7 @@ const Recall = () => {
 		if (currentCardIndex >= cards.length) {
 			setCurrentCardIndex(currentCardIndex - 1);
 		}
-	}, [cards]);
+	}, [cards, currentCardIndex]);
 
 	// Event-driven. Runs only when user clicks on the 'read' button.
 	const readPressedHandler = () => {
@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
 	cardContainer: {
 		paddingRight: 20,
 		paddingLeft: 20,
-		paddingBottom: 50
 	},
 	scrollViewContent: {
 		flexGrow: 1,
