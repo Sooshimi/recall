@@ -10,7 +10,7 @@ const Archive = () => {
   const { archivedCards, deleteCard, restoreCard } = useContext(CardsContext)
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container]} edges={['top']}>
       <View style={styles.cardContainer}>
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -39,8 +39,6 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     flex: 1,
-    paddingTop: 20,
-    paddingBottom: 50,
     paddingRight: 20,
     paddingLeft: 20
   }

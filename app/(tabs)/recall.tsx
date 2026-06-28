@@ -41,7 +41,7 @@ const Recall = () => {
 	};
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<SafeAreaView style={[styles.container]} edges={['top']}>
 			<ScrollView contentContainerStyle={styles.scrollViewContent} showsVerticalScrollIndicator={false}>
 				<View style={styles.cardContainer}>
 					{ currentCard && (
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
 	cardContainer: {
 		paddingRight: 20,
 		paddingLeft: 20,
+		paddingBottom: 10,
 	},
 	scrollViewContent: {
 		flexGrow: 1,
