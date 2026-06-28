@@ -10,6 +10,7 @@ import {
   meaningsForNotification,
   NOTIFICATION_CATEGORY,
 } from "@/services/notificationService";
+import { colors, spacing } from "@/constants/theme";
 
 const Index = () => {
   // @ts-ignore
@@ -74,12 +75,11 @@ export default Index;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EAF0E5",
+    backgroundColor: colors.background,
   },
   cardContainer: {
     flex: 1,
-    paddingRight: 20,
-    paddingLeft: 20,
+    paddingHorizontal: spacing.horizontal,
   },
   scrollViewContent: {
     paddingBottom: 90,

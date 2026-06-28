@@ -1,4 +1,5 @@
 import { CardsContext } from "@/context/CardsContext";
+import { colors } from "@/constants/theme";
 import React, { useContext, useState } from "react";
 import { Button, Pressable, StyleSheet, Text, View } from "react-native";
 
@@ -77,25 +78,19 @@ export default Card;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#EAF0E5",
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
+    backgroundColor: colors.background,
+    padding: 10,
   },
   innerContainer: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: colors.cardColour,
     borderRadius: 15,
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
+    padding: 20,
   },
   word: {
     fontWeight: "bold",
-    color: "#2D342C",
+    color: colors.primaryText,
     paddingBottom: 10,
   },
   meaningsContainer: {
@@ -107,16 +102,16 @@ const styles = StyleSheet.create({
   },
   partOfSpeech: {
     fontWeight: "600",
-    color: "#2D342C",
+    color: colors.primaryText,
     marginBottom: 4,
   },
   definition: {
     fontStyle: "italic",
-    color: "#2D342C",
+    color: colors.primaryText,
   },
   moreText: {
     fontStyle: "italic",
-    color: "#2D342C",
+    color: colors.primaryText,
     opacity: 0.7,
   },
 });

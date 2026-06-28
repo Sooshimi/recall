@@ -1,4 +1,5 @@
 import { fetchDefinitions } from "@/services/dictionaryService";
+import { colors, spacing } from "@/constants/theme";
 import React, { useState } from "react";
 import { Button, StyleSheet, TextInput, View } from "react-native";
 
@@ -37,7 +38,7 @@ const InputCard = ({ onSubmit }: Props) => {
           placeholder={"Word lookup"}
           placeholderTextColor={"gray"}
         ></TextInput>
-        <Button title="Add" onPress={handleSubmit} color="#2D342C"></Button>
+        <Button title="Add" onPress={handleSubmit} color={colors.primaryText}></Button>
       </View>
     </View>
   );
@@ -49,17 +50,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "stretch",
-    backgroundColor: "#EAF0E5",
+    backgroundColor: colors.background,
     margin: 10,
   },
   innerContainer: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#DDE5D8",
+    backgroundColor: colors.inputCard,
     borderRadius: 15,
-    paddingTop: 20,
-    paddingBottom: 20,
-    paddingLeft: 20,
+    paddingVertical: 20,
+    paddingLeft: spacing.horizontal,
     paddingRight: 10,
   },
   textBox: {

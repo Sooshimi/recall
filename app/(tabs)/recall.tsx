@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import Card from "@/components/Card";
 import { CardsContext } from "@/context/CardsContext";
+import { colors, spacing } from "@/constants/theme";
 
 const Recall = () => {
   // @ts-ignore
@@ -74,12 +75,11 @@ export default Recall;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EAF0E5",
+    backgroundColor: colors.background,
     justifyContent: "center",
   },
   cardContainer: {
-    paddingRight: 20,
-    paddingLeft: 20,
+    paddingHorizontal: spacing.horizontal,
     paddingBottom: 10,
   },
   scrollViewContent: {

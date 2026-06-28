@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import Card from "@/components/Card";
 import { CardsContext } from "@/context/CardsContext";
+import { colors, spacing } from "@/constants/theme";
 
 const Archive = () => {
   // @ts-ignore
@@ -36,11 +37,10 @@ export default Archive;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#EAF0E5",
+    backgroundColor: colors.background,
   },
   cardContainer: {
     flex: 1,
-    paddingRight: 20,
-    paddingLeft: 20,
+    paddingHorizontal: spacing.horizontal,
   },
 });
