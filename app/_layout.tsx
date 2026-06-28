@@ -3,21 +3,26 @@ import { Stack } from "expo-router";
 import { useContext, useEffect } from "react";
 
 import CardsContextProvider, { CardsContext } from "@/context/CardsContext";
-import { MARK_AS_READ_ACTION, setupNotifications } from "@/services/notificationService";
+import {
+  MARK_AS_READ_ACTION,
+  setupNotifications,
+} from "@/services/notificationService";
 
 function NotificationListener() {
   // @ts-ignore
   const { readPressed } = useContext(CardsContext);
 
   useEffect(() => {
-    const subscription = Notifications.addNotificationResponseReceivedListener((response) => {
-      if (response.actionIdentifier === MARK_AS_READ_ACTION) {
-        const word = response.notification.request.content.data?.word;
-        if (word) {
-          readPressed(word);
+    const subscription = Notifications.addNotificationResponseReceivedListener(
+      (response) => {
+        if (response.actionIdentifier === MARK_AS_READ_ACTION) {
+          const word = response.notification.request.content.data?.word;
+          if (word) {
+            readPressed(word);
+          }
         }
-      }
-    });
+      },
+    );
 
     return () => subscription.remove();
   }, [readPressed]);
@@ -26,7 +31,9 @@ function NotificationListener() {
 }
 
 export default function RootLayout() {
-  useEffect(() => { setupNotifications() }, []);
+  useEffect(() => {
+    setupNotifications();
+  }, []);
 
   return (
     <CardsContextProvider>
