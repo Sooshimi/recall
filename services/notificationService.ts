@@ -1,12 +1,6 @@
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
 
-type notification_props = {
-  title: string;
-  body: string;
-  seconds?: number;
-};
-
 export const NOTIFICATION_CATEGORY = "NEW_WORD";
 export const MARK_AS_READ_ACTION = "MARK_AS_READ";
 
@@ -74,23 +68,4 @@ export const meaningsForNotification = (
       return `${pos}: ${truncated.join("; ")}${suffix}`;
     })
     .join("\n\n");
-};
-
-// Wrapper function to schedule a local notification with a title, body, and optional delay in seconds.
-// Returns the notification ID if scheduled successfully, else null.
-export const scheduleLocalNotification = async ({
-  title,
-  body,
-  seconds = 1,
-}: notification_props) => {
-  // Ensure notification permissions are set up before scheduling
-  const notificationGranted = await setupNotifications();
-  if (!notificationGranted) return null;
-
-  // Schedule the notification with the provided title, body, and delay
-  // This is called in the Index component when a new card is added, to notify the user of the addition.
-  return Notifications.scheduleNotificationAsync({
-    content: { title, body },
-    trigger: { seconds } as any,
-  });
 };
