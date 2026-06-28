@@ -47,10 +47,11 @@ const Index = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container]} edges={['top']}>
       <View style={styles.cardContainer}>
         <InputCard onSubmit={handleAddCard}/>
         <FlatList
+          contentContainerStyle={styles.scrollViewContent}
           showsVerticalScrollIndicator={false}
           data={cards}
           keyExtractor={(item, index) => index.toString()}
@@ -75,9 +76,10 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     flex: 1,
-    paddingTop: 20,
-    paddingBottom: 50,
     paddingRight: 20,
     paddingLeft: 20
+  },
+  scrollViewContent: {
+    paddingBottom: 90
   }
 });
