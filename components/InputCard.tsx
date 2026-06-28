@@ -22,7 +22,7 @@ const InputCard = ({ onSubmit }: Props) => {
       onSubmit({ word, meanings });
       setText("");
     } catch (e) {
-      console.log(e);
+      console.error(e);
       alert("Cannot find word");
     }
   };
