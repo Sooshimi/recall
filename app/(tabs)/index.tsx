@@ -1,5 +1,5 @@
 import * as Notifications from "expo-notifications";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Alert, FlatList, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
