@@ -1,5 +1,5 @@
-import { CardsContext } from "@/context/CardsContext";
 import { colors } from "@/constants/theme";
+import { CardsContext } from "@/context/CardsContext";
 import React, { useContext, useState } from "react";
 import { Button, Pressable, StyleSheet, Text, View } from "react-native";
 
@@ -16,7 +16,6 @@ const Card = ({ text, meanings, readCount, onDelete, onRestore }: Props) => {
   const { archiveCard } = useContext(CardsContext);
   const [expand, setExpand] = useState<boolean>(false);
   const maxDefinitions = 2;
-  const debug = false;
 
   return (
     <Pressable
@@ -56,7 +55,7 @@ const Card = ({ text, meanings, readCount, onDelete, onRestore }: Props) => {
           })}
         </View>
 
-        {debug && <Text style={styles.definition}>{readCount}</Text>}
+        <Text style={styles.readCounter}>{readCount}</Text>
 
         {onDelete ? (
           <>
@@ -113,5 +112,14 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
     color: colors.primaryText,
     opacity: 0.7,
+  },
+  readCounter: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+    fontSize: 12,
+    fontWeight: "bold",
+    color: colors.primaryText,
+    opacity: 0.5,
   },
 });
